@@ -50,7 +50,7 @@ namespace logger {
     }
 
     LogLevel FieldProxy::getLogLevel() {
-        return LogLevel::EVENTS;
+        return LogLevel(LogLevel::Level::EVENTS);
     }
 
     std::vector<std::vector<kernel::Cell *>> &FieldProxy::getAllCells() {

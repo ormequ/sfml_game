@@ -5,9 +5,23 @@
 #ifndef GAME_LOGLEVEL_H
 #define GAME_LOGLEVEL_H
 
+#include <string>
+#include <map>
+
 namespace logger {
-    enum class LogLevel {
-        EVENTS, GAME_STATE, ERRORS, DEFAULT
+    class LogLevel {
+    public:
+        enum class Level {
+            EVENTS, GAME_STATE, ERRORS, DEFAULT
+        };
+
+        LogLevel(Level lvl);
+
+        explicit operator std::string() const;
+
+        bool operator==(const LogLevel &p) const;
+    protected:
+        Level lvl_;
     };
 }
 

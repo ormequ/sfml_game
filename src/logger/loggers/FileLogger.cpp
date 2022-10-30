@@ -7,7 +7,7 @@
 namespace logger {
     FileLogger::FileLogger(const std::string& filename, const std::vector<LogLevel> &log_lvl) : log_lvl_(log_lvl) {
         file_.open(filename);
-        file_ << LoggerMessage("Logging has been started");
+        file_ << LoggerMessage("Logging has been started", LogLevel(LogLevel::Level::DEFAULT));
     }
 
     void FileLogger::notify(const LoggerMessage& message) {

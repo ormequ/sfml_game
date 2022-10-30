@@ -60,6 +60,6 @@ namespace logger {
     }
 
     LogLevel PlayerProxy::getLogLevel() {
-        return LogLevel::EVENTS;
+        return LogLevel(LogLevel::Level::EVENTS);
     }
 }

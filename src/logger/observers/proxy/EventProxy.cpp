@@ -22,6 +22,6 @@ namespace logger {
     }
 
     LogLevel EventProxy::getLogLevel() {
-        return LogLevel::EVENTS;
+        return LogLevel(LogLevel::Level::EVENTS);
     }
 }

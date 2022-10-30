@@ -10,7 +10,7 @@ namespace logger {
     }
 
     void AbstractObserver::notify(const std::string& message) {
-        for (auto subscriber: subscribers_) {
+        for (auto subscriber : subscribers_) {
             subscriber->notify(LoggerMessage{message, getLogLevel()});
         }
     }

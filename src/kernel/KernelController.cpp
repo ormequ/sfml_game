@@ -38,7 +38,7 @@ namespace kernel {
         creature->setPoint(point);
         if (dispatch) {
             if (pos_before == creature->getPoint()) {
-                throw std::runtime_error("Kernel Exception: The creature has tried to move into the impassable cell.");
+                throw std::runtime_error("Kernel Exception: The creature has tried to move into the impassable cell");
             }
             field_->getCell(creature->getPoint())->dispatchListener();
         }

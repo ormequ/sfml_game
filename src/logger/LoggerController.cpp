@@ -45,13 +45,13 @@ namespace logger {
             return;
         }
         if (lvl.find("events") != std::string::npos) {
-            log_lvl_.push_back(LogLevel::EVENTS);
+            log_lvl_.push_back(LogLevel(LogLevel::Level::EVENTS));
         }
         if (lvl.find("errors") != std::string::npos) {
-            log_lvl_.push_back(LogLevel::ERRORS);
+            log_lvl_.push_back(LogLevel(LogLevel::Level::ERRORS));
         }
         if (lvl.find("state") != std::string::npos) {
-            log_lvl_.push_back(LogLevel::GAME_STATE);
+            log_lvl_.push_back(LogLevel(LogLevel::Level::GAME_STATE));
         }
         if (log_lvl_.empty()) {
             return;

@@ -15,7 +15,7 @@
 namespace logger {
     class LoggerMessage {
     public:
-        explicit LoggerMessage(std::string message, LogLevel level = LogLevel::DEFAULT);
+        explicit LoggerMessage(std::string message, LogLevel level);
 
         friend std::ostream& operator<<(std::ostream& stream, const LoggerMessage& message);
 

@@ -33,6 +33,6 @@ namespace logger {
     }
 
     LogLevel GameStateProxy::getLogLevel() {
-        return LogLevel::GAME_STATE;
+        return LogLevel(LogLevel::Level::GAME_STATE);
     }
 }

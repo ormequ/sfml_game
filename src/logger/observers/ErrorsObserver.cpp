@@ -10,6 +10,6 @@ namespace logger {
     }
 
     LogLevel ErrorsObserver::getLogLevel() {
-        return LogLevel::ERRORS;
+        return LogLevel(LogLevel::Level::ERRORS);
     }
 }

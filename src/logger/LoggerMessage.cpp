@@ -35,26 +35,8 @@ namespace logger {
         time(&t);
         tm = localtime(&t);
         char time_prefix[100];
-        strftime(time_prefix, sizeof(time_prefix), "[%d.%m.%Y %H:%M:%S] ", tm);
+        strftime(time_prefix, sizeof(time_prefix), "[%d.%m.%Y %H:%M:%S]", tm);
         std::string str(time_prefix);
-
-        switch (lvl_) {
-            case LogLevel::EVENTS:
-                str += "[EVENT] ";
-                break;
-            case LogLevel::ERRORS:
-                str += "[ERROR] ";
-                break;
-            case LogLevel::GAME_STATE:
-                str += "[GAME_STATE] ";
-                break;
-            case LogLevel::DEFAULT:
-                str += "[DEFAULT] ";
-                break;
-            default:
-                str += "[UNKNOWN] ";
-
-        }
-        return str;
+        return str + " [" + (std::string)lvl_ + "] ";
     }
 }
