@@ -10,16 +10,16 @@ namespace view {
 }
 #include <SFML/Graphics.hpp>
 
-#include "../../GameMediator.h"
+#include "CommandCreator.h"
 
 namespace view {
     class KeyboardHandler {
     public:
-        explicit KeyboardHandler(GameMediator* game_mediator);
+        explicit KeyboardHandler(CommandCreator* command_creator);
 
         void handle(sf::Keyboard::Key key);
     protected:
-        GameMediator* game_mediator_;
+        CommandCreator* command_creator_;
     };
 }
 

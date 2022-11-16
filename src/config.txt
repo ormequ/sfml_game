@@ -1,0 +1,4 @@
+w MoveUp
+a MoveLeft
+s MoveDown
+d MoveRight

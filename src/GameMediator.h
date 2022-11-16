@@ -32,7 +32,9 @@ public:
 
     kernel::IField *getField();
 
-    void movePlayer(kernel::ICreature::Direction direction);
+    void rotateCreature(kernel::ICreature *creature, kernel::ICreature::Direction direction);
+
+    void moveCreature(kernel::ICreature *creature, Point point);
 
     kernel::ICreature *getPlayer();
 

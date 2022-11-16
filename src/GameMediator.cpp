@@ -35,7 +35,7 @@ std::vector<kernel::ICreature *> GameMediator::getCreatures() {
     return kernel_controller_->getCreatureManager()->getAllCreatures();
 }
 
-void GameMediator::movePlayer(kernel::ICreature::Direction direction) {
+/*void GameMediator::moveCreature(kernel::ICreature::Direction direction) {
     kernel::ICreature *player = kernel_controller_->getPlayer();
     Point pos = player->getPoint();
     switch (direction) {
@@ -60,7 +60,7 @@ void GameMediator::movePlayer(kernel::ICreature::Direction direction) {
         logger_controller_->catchException(e);
     }
     kernel_controller_->rotateCreature(player, direction);
-}
+}*/
 
 kernel::IField *GameMediator::getField() {
     return kernel_controller_->getField();
@@ -106,4 +106,17 @@ mapmaker::MapMaker *GameMediator::getMapMaker() {
 
 GameMediator::~GameMediator() {
     delete game_state_controller_;
+}
+
+void GameMediator::rotateCreature(kernel::ICreature *creature, kernel::ICreature::Direction direction) {
+    kernel_controller_->rotateCreature(creature, direction);
+
+}
+
+void GameMediator::moveCreature(kernel::ICreature *creature, Point point) {
+    try {
+        kernel_controller_->moveCreature(creature, point);
+    } catch (std::exception &e) {
+        logger_controller_->catchException(e);
+    }
 }

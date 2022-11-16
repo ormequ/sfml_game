@@ -7,7 +7,9 @@
 namespace view {
     ViewController::ViewController(GameMediator *game_mediator) {
         game_mediator_ = game_mediator;
-        keyboard_handler_ = new KeyboardHandler(game_mediator_);
+        command_creator_ = new CommandCreator(game_mediator);
+        command_creator_->read(new HandlerFileReader);
+        keyboard_handler_ = new KeyboardHandler(command_creator_);
         draw_manager_ = new DrawManager(game_mediator_, window_);
     }
 
@@ -41,11 +43,13 @@ namespace view {
     }
 
     ViewController::~ViewController() {
+        delete command_creator_;
         delete keyboard_handler_;
         delete draw_manager_;
     }
 
     std::string ViewController::ask(const std::string &question, const std::vector<std::string> &answers) {
+        return "console errors";
         std::string printable_ans;
         for (const auto& answer : answers) {
             printable_ans += "|" + answer;
