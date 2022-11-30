@@ -35,34 +35,10 @@ std::vector<kernel::ICreature *> GameMediator::getCreatures() {
     return kernel_controller_->getCreatureManager()->getAllCreatures();
 }
 
-/*void GameMediator::moveCreature(kernel::ICreature::Direction direction) {
-    kernel::ICreature *player = kernel_controller_->getPlayer();
-    Point pos = player->getPoint();
-    switch (direction) {
-        case kernel::ICreature::Direction::UP:
-            pos.y--;
-            break;
-        case kernel::ICreature::Direction::LEFT:
-            pos.x--;
-            break;
-        case kernel::ICreature::Direction::DOWN:
-            pos.y++;
-            break;
-        case kernel::ICreature::Direction::RIGHT:
-            pos.x++;
-            break;
-        default:
-            return;
-    }
-    try {
-        kernel_controller_->moveCreature(player, pos);
-    } catch (std::exception &e) {
-        logger_controller_->catchException(e);
-    }
-    kernel_controller_->rotateCreature(player, direction);
-}*/
-
 kernel::IField *GameMediator::getField() {
+    if (!kernel_controller_->getField()) {
+        setField(new kernel::Field);
+    }
     return kernel_controller_->getField();
 }
 
