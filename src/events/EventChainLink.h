@@ -17,6 +17,8 @@ namespace events {
     public:
         EventChainLink *addNext(EventChainLink *next, bool delete_previous = false);
 
+        EventChainLink *addToEnd(EventChainLink *event);
+
         EventChainLink *getFirst();
 
         void setPrevious(EventChainLink *previous);

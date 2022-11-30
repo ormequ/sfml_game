@@ -9,7 +9,6 @@ namespace events {
     class MapEventFactory;
 }
 
-#include "MapEvent.h"
 #include "../IEventFactory.h"
 #include "../../GameMediator.h"
 #include "MapMakeForestEvent.h"

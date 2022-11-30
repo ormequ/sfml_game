@@ -6,7 +6,7 @@
 
 namespace events {
     void PlayerHealEvent::dispatch(Point point) {
-        player_->heal(30);
+        player_->heal(40);
         dispatchNext(point);
     }
 }

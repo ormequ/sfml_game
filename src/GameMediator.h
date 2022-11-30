@@ -13,15 +13,15 @@ class GameMediator;
 #include "kernel/KernelController.h"
 #include "events/EventsController.h"
 #include "Point.h"
-#include "mapmaker/MapMaker.h"
+#include "mapmaker/MapGenerator.h"
 #include "GameStateController.h"
 #include "logger/LoggerController.h"
 
 class GameMediator {
 public:
     void init(
-            kernel::KernelController *, view::ViewController *, mapmaker::MapMaker *, events::EventsController *,
-            logger::LoggerController *
+        kernel::KernelController *, view::ViewController *, mapmaker::MapGenerator *, events::EventsController *,
+        logger::LoggerController *
     );
 
     void update();
@@ -51,17 +51,19 @@ public:
     std::string askUser(const std::string &question, const std::vector<std::string> &answers);
 
     void addCellEvent(
-            Point point, events::EventChainLink *event, kernel::Cell::Tileset tileset = kernel::Cell::Tileset::GRASS
+        Point point, events::EventChainLink *event,
+        kernel::Cell::Tileset tileset = kernel::Cell::Tileset::GRASS,
+        const std::function<bool()>& is_able = []() { return true; }
     );
 
-    mapmaker::MapMaker *getMapMaker();
+    mapmaker::MapGenerator *getMapGenerator();
 
     ~GameMediator();
 
 protected:
     kernel::KernelController *kernel_controller_ = nullptr;
     view::ViewController *view_controller_ = nullptr;
-    mapmaker::MapMaker *map_maker_ = nullptr;
+    mapmaker::MapGenerator *map_generator_ = nullptr;
     events::EventsController *events_controller_ = nullptr;
     logger::LoggerController *logger_controller_ = nullptr;
     IGameState *game_state_controller_ = nullptr;

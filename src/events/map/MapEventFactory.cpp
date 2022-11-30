@@ -8,7 +8,7 @@ namespace events {
 
     EventChainLink *MapEventFactory::produce(const std::string& type) {
         if (type == "forest") {
-            return new MapMakeForestEvent(game_mediator_->getMapMaker());
+            return new MapMakeForestEvent(game_mediator_->getMapGenerator());
         }
         return nullptr;
     }

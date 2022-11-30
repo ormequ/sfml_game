@@ -10,18 +10,18 @@ namespace events {
 }
 
 #include "../EventChainLink.h"
-#include "../../mapmaker/MapMaker.h"
+#include "../../mapmaker/MapGenerator.h"
 
 namespace events {
     class MapMakeForestEvent : public EventChainLink {
     public:
-        explicit MapMakeForestEvent(mapmaker::MapMaker *map_maker);
+        explicit MapMakeForestEvent(mapmaker::MapGenerator *map_generator);
 
         void dispatch(Point point) override;
 
         ~MapMakeForestEvent() override = default;
     protected:
-        mapmaker::MapMaker *map_maker_;
+        mapmaker::MapGenerator *map_generator_;
     };
 }
 

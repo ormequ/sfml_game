@@ -9,6 +9,7 @@ namespace logger {
         call_point_ = position;
         notify("Something has happened at the point " + (std::string)call_point_);
         event_->dispatch(position);
+        dispatchNext(position);
     }
 
     EventProxy::EventProxy(events::IEvent *event) : event_(event) {

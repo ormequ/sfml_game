@@ -21,7 +21,7 @@ namespace events {
 namespace events {
     class EventsController {
     public:
-        enum Factory {
+        enum class Factory {
             CELLS, PLAYER, GAME_STATE, MAP
         };
 

@@ -100,7 +100,7 @@ namespace view {
                 );
                 result.cell_percentage = 1;
                 break;
-            case Tileset::HEART:
+            case Tileset::AID_KIT:
                 result.sprite = texture_manager_.getSprite(
                         "../src/resources/images/items/Medipack.png",
                         sf::IntRect(0, 0, 10, 10)

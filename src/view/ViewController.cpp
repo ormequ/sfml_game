@@ -49,7 +49,7 @@ namespace view {
     }
 
     std::string ViewController::ask(const std::string &question, const std::vector<std::string> &answers) {
-        return "console errors";
+        // return "console errors";
         std::string printable_ans;
         for (const auto& answer : answers) {
             printable_ans += "|" + answer;

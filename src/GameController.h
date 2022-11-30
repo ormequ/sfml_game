@@ -6,6 +6,7 @@
 #define GAME_GAMECONTROLLER_H
 
 #include "GameMediator.h"
+#include "mapmaker/MapPresetsCollector.h"
 
 class GameController {
 public:
@@ -18,7 +19,7 @@ protected:
     view::ViewController *view_controller_;
     kernel::KernelController *kernel_controller_;
     GameMediator *game_mediator_;
-    mapmaker::MapMaker *map_maker_;
+    mapmaker::MapGenerator *map_generator_;
     events::EventsController *events_controller_;
     logger::LoggerController *logger_controller_;
 };

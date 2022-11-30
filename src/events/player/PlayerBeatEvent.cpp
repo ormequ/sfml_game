@@ -6,7 +6,7 @@
 
 namespace events {
         void PlayerBeatEvent::dispatch(Point point) {
-            player_->takeHit(100);
+            player_->takeHit(60);
             dispatchNext(point);
         }
 }

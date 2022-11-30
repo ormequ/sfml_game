@@ -5,7 +5,7 @@
 #ifndef GAME_CELL_H
 #define GAME_CELL_H
 
-#include "../../events/IEvent.h"
+#include "../../events/EventChainLink.h"
 #include "../../Point.h"
 
 namespace kernel {
@@ -13,7 +13,7 @@ namespace kernel {
     public:
         enum class Tileset {
             GRASS, HOLE, ROCK, WATER_GLARE, WATER_LILY, WATER_FISH, BUTTON,
-            FENCE_VERTICAL, FENCE_HORIZONTAL, SMALL_IRON_PILLAR, HEART,
+            FENCE_VERTICAL, FENCE_HORIZONTAL, SMALL_IRON_PILLAR, AID_KIT,
             TORII, TUNNEL, TREE_OAK, TREE_SPRUCE
         };
 
@@ -23,7 +23,9 @@ namespace kernel {
 
         Cell &operator=(const Cell &obj) = default;
 
-        void addListener(events::IEvent *listener, bool delete_previous = true);
+        void addListener(events::EventChainLink *listener, bool delete_previous = true);
+
+        events::EventChainLink *getListener();
 
         void changeState(bool passable);
 
@@ -45,7 +47,7 @@ namespace kernel {
         Point point_;
         bool passable_;
         Tileset tileset_;
-        events::IEvent *listener_;
+        events::EventChainLink *listener_;
     };
 }
 

@@ -26,7 +26,7 @@ namespace kernel {
         }
     }
 
-    void Cell::addListener(events::IEvent* listener, bool delete_previous) {
+    void Cell::addListener(events::EventChainLink* listener, bool delete_previous) {
         if (listener == nullptr) {
             throw std::invalid_argument("Kernel Exception: Incorrect event listener in the cell");
         }
@@ -72,5 +72,9 @@ namespace kernel {
 
     void Cell::setTileset(Cell::Tileset tileset) {
         tileset_ = tileset;
+    }
+
+    events::EventChainLink *Cell::getListener() {
+        return listener_;
     }
 }

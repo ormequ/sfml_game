@@ -13,7 +13,7 @@ namespace events {
 
 namespace events {
 
-    class EmptyEvent final : public  EventChainLink {
+    class EmptyEvent final : public EventChainLink {
     public:
         void dispatch(Point point) final;
     };

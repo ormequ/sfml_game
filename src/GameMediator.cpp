@@ -5,21 +5,21 @@
 #include "GameMediator.h"
 
 void GameMediator::init(
-        kernel::KernelController *kernel_controller, view::ViewController *view_controller,
-        mapmaker::MapMaker *map_maker, events::EventsController *events_controller,
-        logger::LoggerController *logger_controller
+    kernel::KernelController *kernel_controller, view::ViewController *view_controller,
+    mapmaker::MapGenerator *map_generator, events::EventsController *events_controller,
+    logger::LoggerController *logger_controller
 ) {
     kernel_controller_ = kernel_controller;
     view_controller_ = view_controller;
-    map_maker_ = map_maker;
+    map_generator_ = map_generator;
     events_controller_ = events_controller;
     logger_controller_ = logger_controller;
 
     game_state_controller_ = logger_controller_->getProxy(new GameStateController);
     game_state_controller_->setState(IGameState::State::START);
     kernel_controller_->setPlayer(
-            logger_controller_->getProxy(kernel_controller_->getPlayer()),
-            false
+        logger_controller_->getProxy(kernel_controller_->getPlayer()),
+        false
     );
 }
 
@@ -91,17 +91,40 @@ void GameMediator::setField(kernel::IField *field) {
 }
 
 std::string GameMediator::askUser(const std::string &question, const std::vector<std::string> &answers) {
+    // return "console errors";
     return view_controller_->ask(question, answers);
 }
 
-void GameMediator::addCellEvent(Point point, events::EventChainLink *event, kernel::Cell::Tileset tileset) {
+void GameMediator::addCellEvent(
+    Point point, events::EventChainLink *event, kernel::Cell::Tileset tileset, const std::function<bool()> &is_able
+) {
     kernel::Cell *cell = kernel_controller_->getField()->getCell(point);
-    cell->addListener(logger_controller_->getProxy(event));
+    events::EventChainLink *listener = cell->getListener();
+    if (listener) {
+        listener->addToEnd(event);
+        /*cell->addListener(
+            listener
+                ->setTransmitChecker(is_able)
+                ->addNext(logger_controller_->getProxy(event))
+                ->getFirst(),
+            false
+        );*/
+        // auto *l2 = cell->getListener();
+        // l2->getFirst();
+        // cell->addListener(listener);
+    } else {
+        cell->addListener(
+            logger_controller_->getProxy(events::EventsController::getEmptyEvent())
+                ->setTransmitChecker(is_able)
+                ->addNext(event)
+                ->getFirst()
+        );
+    }
     cell->setTileset(tileset);
 }
 
-mapmaker::MapMaker *GameMediator::getMapMaker() {
-    return map_maker_;
+mapmaker::MapGenerator *GameMediator::getMapGenerator() {
+    return map_generator_;
 }
 
 GameMediator::~GameMediator() {
