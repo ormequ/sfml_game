@@ -11,6 +11,8 @@ namespace view {
                 {"MoveDown",  new MoveDownCommand(game_mediator_)},
                 {"MoveLeft",  new MoveLeftCommand(game_mediator_)},
                 {"MoveRight", new MoveRightCommand(game_mediator_)},
+                {"Load",      new LoadCommand(game_mediator_)},
+                {"Save",      new SaveCommand(game_mediator_)},
         };
     }
 
@@ -23,13 +25,13 @@ namespace view {
 
     void CommandCreator::read(IHandlerReader *reader) {
         std::map<std::string, std::string> str_commands = reader->read();
-        for (const auto &pair : str_commands) {
+        for (const auto &pair: str_commands) {
             keymap_[pair.first] = commands_from_string_[pair.second];
         }
     }
 
     CommandCreator::~CommandCreator() {
-        for (const auto& it : commands_from_string_) {
+        for (const auto &it: commands_from_string_) {
             delete it.second;
         }
     }

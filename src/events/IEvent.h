@@ -10,11 +10,16 @@ namespace events {
 }
 
 #include "../Point.h"
+#include <vector>
+#include "FactoryNames.h"
 
 namespace events {
     class IEvent {
     public:
         virtual void dispatch(Point position) = 0;
+
+        virtual std::pair<FactoryName, std::string> serialize() = 0;
+
         virtual ~IEvent() = default;
     };
 }

@@ -16,6 +16,8 @@ namespace logger {
 
         void setPoint(Point point) override;
 
+        void setHpParams(kernel::CreatureParam hp) override;
+
         void setDamage(int damage) override;
 
         void takeHit(int damage) override;

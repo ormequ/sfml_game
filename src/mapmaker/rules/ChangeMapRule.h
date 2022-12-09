@@ -16,7 +16,7 @@ namespace mapmaker {
         void operator()() {
             game_mediator_->addCellEvent(
                 {x, y},
-                game_mediator_->getEventsController()->produce(events::EventsController::Factory::MAP, "forest"),
+                game_mediator_->getEventsController()->produce(events::FactoryName::MAP, "forest"),
                 kernel::Cell::Tileset::TUNNEL
             );
         }

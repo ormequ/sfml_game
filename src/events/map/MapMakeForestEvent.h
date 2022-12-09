@@ -19,6 +19,8 @@ namespace events {
 
         void dispatch(Point point) override;
 
+        std::pair<FactoryName, std::string> serialize() override;
+
         ~MapMakeForestEvent() override = default;
     protected:
         mapmaker::MapGenerator *map_generator_;

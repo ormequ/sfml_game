@@ -16,7 +16,7 @@ namespace mapmaker {
         void operator()() {
             game_mediator_->addCellEvent(
                 {x, y},
-                game_mediator_->getEventsController()->produce(events::EventsController::Factory::PLAYER, "heal"),
+                game_mediator_->getEventsController()->produce(events::FactoryName::PLAYER, "heal"),
                 kernel::Cell::Tileset::AID_KIT
             );
         }

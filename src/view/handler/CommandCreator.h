@@ -13,6 +13,8 @@ namespace view {
 #include "commands/MoveDownCommand.h"
 #include "commands/MoveLeftCommand.h"
 #include "commands/MoveRightCommand.h"
+#include "commands/LoadCommand.h"
+#include "commands/SaveCommand.h"
 #include "reader/IHandlerReader.h"
 #include "../../GameMediator.h"
 

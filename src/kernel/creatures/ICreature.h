@@ -25,6 +25,8 @@ namespace kernel {
 
         virtual void heal(int hp) = 0;
 
+        virtual void setHpParams(CreatureParam hp) = 0;
+
         virtual void setDirection(Direction direction) = 0;
 
         virtual int attack() = 0;

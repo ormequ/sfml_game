@@ -3,3 +3,4 @@
 /.idea/
 log.txt
 /src/log.txt
+/saves/*.env

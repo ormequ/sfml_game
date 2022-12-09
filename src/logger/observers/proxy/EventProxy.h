@@ -15,6 +15,8 @@ namespace logger {
 
         void dispatch(Point position) override;
 
+        std::pair<events::FactoryName, std::string> serialize() override;
+
         ~EventProxy() override;
 
     protected:

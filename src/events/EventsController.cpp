@@ -8,22 +8,22 @@ namespace events {
 
     EventsController::EventsController(GameMediator *game_mediator): game_mediator_(game_mediator) {}
 
-    IEventFactory *EventsController::getFactory(Factory factory_name) {
+    IEventFactory *EventsController::getFactory(FactoryName factory_name) {
         IEventFactory *factory = nullptr;
         if (factories_.count(factory_name)) {
             return factories_[factory_name];
         }
         switch (factory_name) {
-            case Factory::CELLS:
+            case FactoryName::CELLS:
                 factory = new CellsEventFactory(game_mediator_);
                 break;
-            case Factory::PLAYER:
+            case FactoryName::PLAYER:
                 factory = new PlayerEventFactory(game_mediator_);
                 break;
-            case Factory::GAME_STATE:
+            case FactoryName::GAME_STATE:
                 factory = new GameStateEventFactory(game_mediator_);
                 break;
-            case Factory::MAP:
+            case FactoryName::MAP:
                 factory = new MapEventFactory(game_mediator_);
                 break;
         }
@@ -38,7 +38,7 @@ namespace events {
         factories_.clear();
     }
 
-    EventChainLink *EventsController::produce(EventsController::Factory factory_name, const std::string& type) {
+    EventChainLink *EventsController::produce(FactoryName factory_name, const std::string& type) {
         IEventFactory *factory = getFactory(factory_name);
         if (factory != nullptr) {
             return factory->produce(type);

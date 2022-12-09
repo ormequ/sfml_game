@@ -16,6 +16,8 @@ namespace events {
     class EmptyEvent final : public EventChainLink {
     public:
         void dispatch(Point point) final;
+
+        std::pair<FactoryName, std::string> serialize() override;
     };
 
 }

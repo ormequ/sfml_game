@@ -22,6 +22,7 @@ protected:
     mapmaker::MapGenerator *map_generator_;
     events::EventsController *events_controller_;
     logger::LoggerController *logger_controller_;
+    memento::MementoController *memento_controller_;
 };
 
 

@@ -62,4 +62,8 @@ namespace logger {
     LogLevel PlayerProxy::getLogLevel() {
         return LogLevel(LogLevel::Level::EVENTS);
     }
+
+    void PlayerProxy::setHpParams(kernel::CreatureParam hp) {
+        player_->setHpParams(hp);
+    }
 }

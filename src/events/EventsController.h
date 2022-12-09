@@ -17,26 +17,24 @@ namespace events {
 #include "game_state/GameStateEventFactory.h"
 #include "map/MapEventFactory.h"
 #include "EmptyEvent.h"
+#include "FactoryNames.h"
 
 namespace events {
     class EventsController {
     public:
-        enum class Factory {
-            CELLS, PLAYER, GAME_STATE, MAP
-        };
 
         explicit EventsController(GameMediator *game_mediator);
 
-        IEventFactory *getFactory(Factory factory);
+        IEventFactory *getFactory(FactoryName factory);
 
-        EventChainLink *produce(Factory factory_name, const std::string& type);
+        EventChainLink *produce(FactoryName factory_name, const std::string& type);
 
         static EventChainLink *getEmptyEvent();
 
         ~EventsController();
     protected:
         GameMediator *game_mediator_;
-        std::map<Factory, IEventFactory *> factories_;
+        std::map<FactoryName, IEventFactory *> factories_;
     };
 }
 

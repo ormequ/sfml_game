@@ -14,6 +14,8 @@ namespace events {
 
         void dispatch(Point point) override;
 
+        std::pair<FactoryName, std::string> serialize() override;
+
         ~PlayerHealEvent() override = default;
     };
 }

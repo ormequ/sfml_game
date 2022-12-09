@@ -12,14 +12,15 @@ GameController::GameController() {
     map_generator_ = new mapmaker::MapGenerator(game_mediator_);
     events_controller_ = new events::EventsController(game_mediator_);
     logger_controller_ = new logger::LoggerController(game_mediator_);
+    memento_controller_ = new memento::MementoController(game_mediator_);
 }
 
 void GameController::start() {
-    // logger_controller_->startLogging();
+//     logger_controller_->startLogging();
     try {
         game_mediator_->init(
             kernel_controller_, view_controller_, map_generator_,
-            events_controller_, logger_controller_
+            events_controller_, logger_controller_, memento_controller_
         );
         mapmaker::MapPresetsCollector map_presets_collector(game_mediator_);
         map_presets_collector.generate();
@@ -37,4 +38,5 @@ GameController::~GameController() {
     delete map_generator_;
     delete events_controller_;
     delete logger_controller_;
+    delete memento_controller_;
 }

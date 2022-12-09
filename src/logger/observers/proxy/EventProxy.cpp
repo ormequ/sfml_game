@@ -25,4 +25,8 @@ namespace logger {
     LogLevel EventProxy::getLogLevel() {
         return LogLevel(LogLevel::Level::EVENTS);
     }
+
+    std::pair<events::FactoryName, std::string> EventProxy::serialize() {
+        return event_->serialize();
+    }
 }

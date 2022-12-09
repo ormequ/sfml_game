@@ -7,13 +7,14 @@
 void GameMediator::init(
     kernel::KernelController *kernel_controller, view::ViewController *view_controller,
     mapmaker::MapGenerator *map_generator, events::EventsController *events_controller,
-    logger::LoggerController *logger_controller
+    logger::LoggerController *logger_controller, memento::MementoController *memento_controller
 ) {
     kernel_controller_ = kernel_controller;
     view_controller_ = view_controller;
     map_generator_ = map_generator;
     events_controller_ = events_controller;
     logger_controller_ = logger_controller;
+    memento_controller_ = memento_controller;
 
     game_state_controller_ = logger_controller_->getProxy(new GameStateController);
     game_state_controller_->setState(IGameState::State::START);
@@ -77,17 +78,8 @@ void GameMediator::addCellEvent(
     kernel::Cell *cell = kernel_controller_->getField()->getCell(point);
     events::EventChainLink *listener = cell->getListener();
     if (listener) {
+        listener->setTransmitChecker(is_able);
         listener->addToEnd(event);
-        /*cell->addListener(
-            listener
-                ->setTransmitChecker(is_able)
-                ->addNext(logger_controller_->getProxy(event))
-                ->getFirst(),
-            false
-        );*/
-        // auto *l2 = cell->getListener();
-        // l2->getFirst();
-        // cell->addListener(listener);
     } else {
         cell->addListener(
             logger_controller_->getProxy(events::EventsController::getEmptyEvent())
@@ -118,4 +110,12 @@ void GameMediator::moveCreature(kernel::ICreature *creature, Point point) {
     } catch (std::exception &e) {
         logger_controller_->catchException(e);
     }
+}
+
+void GameMediator::save() {
+    memento_controller_->save();
+}
+
+void GameMediator::load(const std::string& filename) {
+    memento_controller_->load(filename);
 }

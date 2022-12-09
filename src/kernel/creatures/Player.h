@@ -25,6 +25,8 @@ namespace kernel {
 
         void heal(int hp) override;
 
+        void setHpParams(CreatureParam hp) override;
+
         void setDirection(Direction direction) override;
 
         Direction getDirection() override;

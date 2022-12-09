@@ -1,7 +1,11 @@
 #include "GameController.h"
 
 int main() {
-    GameController game;
-    game.start();
+    try {
+        GameController game;
+        game.start();
+    } catch (...) {
+        main();
+    }
     return 0;
 }

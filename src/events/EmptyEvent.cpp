@@ -8,4 +8,8 @@ namespace events {
     void EmptyEvent::dispatch(Point point) {
         dispatchNext(point);
     }
+
+    std::pair<FactoryName, std::string> EmptyEvent::serialize() {
+        return {};
+    }
 }

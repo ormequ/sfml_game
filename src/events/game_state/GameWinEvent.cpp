@@ -11,4 +11,8 @@ namespace events {
 //            game_mediator_->setState(GameMediator::GameState::WIN);
 //        }
     }
+
+    std::pair<FactoryName, std::string> GameWinEvent::serialize() {
+        return {FactoryName::GAME_STATE, "win"};
+    }
 }

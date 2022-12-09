@@ -33,7 +33,8 @@ namespace mapmaker {
             >();
         } else {
             map_generator->generate<
-                mapmaker::CreateFieldRule<100, 100>
+                mapmaker::CreateFieldRule<100, 100>,
+                mapmaker::WinRule<2, 2>
             >();
         }
     }

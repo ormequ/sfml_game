@@ -28,4 +28,8 @@ namespace events {
         >();
     }
 
+    std::pair<FactoryName, std::string> MapMakeForestEvent::serialize() {
+        return {FactoryName::MAP, "forest"};
+    }
+
 }

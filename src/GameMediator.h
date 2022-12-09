@@ -16,12 +16,13 @@ class GameMediator;
 #include "mapmaker/MapGenerator.h"
 #include "GameStateController.h"
 #include "logger/LoggerController.h"
+#include "memento/MementoController.h"
 
 class GameMediator {
 public:
     void init(
         kernel::KernelController *, view::ViewController *, mapmaker::MapGenerator *, events::EventsController *,
-        logger::LoggerController *
+        logger::LoggerController *, memento::MementoController *
     );
 
     void update();
@@ -48,6 +49,10 @@ public:
 
     IGameState *getStateController();
 
+    void save();
+
+    void load(const std::string& filename);
+
     std::string askUser(const std::string &question, const std::vector<std::string> &answers);
 
     void addCellEvent(
@@ -66,6 +71,7 @@ protected:
     mapmaker::MapGenerator *map_generator_ = nullptr;
     events::EventsController *events_controller_ = nullptr;
     logger::LoggerController *logger_controller_ = nullptr;
+    memento::MementoController *memento_controller_ = nullptr;
     IGameState *game_state_controller_ = nullptr;
 };
 

@@ -9,4 +9,8 @@ namespace events {
             player_->takeHit(60);
             dispatchNext(point);
         }
+
+    std::pair<FactoryName, std::string> PlayerBeatEvent::serialize() {
+        return {FactoryName::PLAYER, "beat"};
+    }
 }

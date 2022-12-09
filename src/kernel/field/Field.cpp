@@ -11,18 +11,23 @@ namespace kernel {
         }
 //        width_ = width_ <= 0 ? 10 : width_;
 //        height_ = height_ <= 0 ? 10 : height_;
-        cells_ = std::vector<std::vector<Cell *>>(
-                width_, std::vector<Cell *>(height_, nullptr)
-        );
+//        cells_ = std::vector<std::vector<Cell *>>(
+//                width_, std::vector<Cell *>(height_, nullptr)
+//        );
+        cells_.reserve(width);
         for (int i = 0; i < width_; i++) {
-            cells_.emplace_back(height_);
+            std::vector<Cell *> line;
+            line.reserve(height);
+//            cells_.emplace_back(height_);
             for (int j = 0; j < height_; j++) {
 //                if (i + j == fmax(height_, width_)) {
 //                    cells_[i][j] = new Cell({i, j}, false);
 //                } else {
-                cells_[i][j] = new Cell({i, j});
+                line.push_back(new Cell({i, j}));
+//                cells_[i][j] = new Cell({i, j});
 //                }
             }
+            cells_.push_back(line);
         }
     }
 

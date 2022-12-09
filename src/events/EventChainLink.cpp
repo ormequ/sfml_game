@@ -19,8 +19,7 @@ namespace events {
     }
 
     void EventChainLink::dispatchNext(Point point) {
-        if (next_chain_link_ != nullptr) {
-        // if (next_chain_link_ != nullptr && transmit_checker_()) {
+         if (next_chain_link_ != nullptr && transmit_checker_()) {
             next_chain_link_->dispatch(point);
         }
     }
@@ -51,6 +50,10 @@ namespace events {
         } else {
             return addNext(event);
         }
+    }
+
+    EventChainLink *EventChainLink::getNext() {
+        return next_chain_link_;
     }
 
 

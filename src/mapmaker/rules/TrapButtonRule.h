@@ -16,12 +16,12 @@ namespace mapmaker {
         void operator()() {
             game_mediator_->addCellEvent(
                 {x, y},
-                game_mediator_->getEventsController()->produce(events::EventsController::Factory::CELLS, "imprison"),
+                game_mediator_->getEventsController()->produce(events::FactoryName::CELLS, "imprison"),
                 kernel::Cell::Tileset::BUTTON
             );
             game_mediator_->addCellEvent(
                 {x, y},
-                game_mediator_->getEventsController()->produce(events::EventsController::Factory::PLAYER, "heal"),
+                game_mediator_->getEventsController()->produce(events::FactoryName::PLAYER, "heal"),
                 kernel::Cell::Tileset::BUTTON,
                 []() {
                     std::random_device dev;

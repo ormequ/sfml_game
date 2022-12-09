@@ -16,7 +16,7 @@ namespace mapmaker {
         void operator()() {
             game_mediator_->addCellEvent(
                 {x, y},
-                game_mediator_->getEventsController()->produce(events::EventsController::Factory::PLAYER, "beat"),
+                game_mediator_->getEventsController()->produce(events::FactoryName::PLAYER, "beat"),
                 kernel::Cell::Tileset::HOLE,
                 []() {
                     std::random_device dev;

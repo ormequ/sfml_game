@@ -50,4 +50,9 @@ namespace kernel {
     CreatureParam Player::getHp() {
         return hp_;
     }
+
+    void Player::setHpParams(CreatureParam hp) {
+        hp_.max = hp.max;
+        hp_.value = hp.value;
+    }
 }
