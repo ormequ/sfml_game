@@ -17,9 +17,10 @@ namespace memento {
 #include "../kernel/field/Field.h"
 
 namespace memento {
+    /// Отвечает за сохранение игры. Сделан, ориентируясь на паттерн "Снимок"
     class MementoController {
     public:
-        explicit MementoController(GameMediator *game_mediator, const std::string& saves_dir = "../saves/");
+        explicit MementoController(GameMediator *game_mediator, const std::string& saves_dir = "saves/");
 
         void save();
 

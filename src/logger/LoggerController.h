@@ -22,12 +22,14 @@ namespace logger {
 #include "loggers/FileLogger.h"
 
 namespace logger {
+    /// Отвечает за логирование, реализовано по паттернам "Прокси" и "Наблюдатель"
     class LoggerController {
     public:
         explicit LoggerController(GameMediator *game_mediator);
 
         void startLogging();
 
+        // Перегрузка методов получения прокси для всех возможных
         EventProxy *getProxy(events::EventChainLink *event);
 
         PlayerProxy *getProxy(kernel::ICreature *player);
@@ -36,8 +38,10 @@ namespace logger {
 
         GameStateProxy *getProxy(IGameState *game_state);
 
+        /// Обработка ошибки
         void catchException(std::exception &error);
 
+        /// Подписывает всех логеров на наблюдателя
         void subscribeObserver(AbstractObserver *observer);
 
         ~LoggerController();

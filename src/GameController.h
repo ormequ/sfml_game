@@ -11,7 +11,9 @@
 class GameController {
 public:
     GameController();
-
+    /**
+     * Метод, запускающий игру
+     * */
     void start();
 
     ~GameController();

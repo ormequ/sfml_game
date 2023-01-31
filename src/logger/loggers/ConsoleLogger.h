@@ -11,6 +11,7 @@
 #include <vector>
 
 namespace logger {
+    /// Записывает в консоль логи по переданным уровням
     class ConsoleLogger : public ISubscriber {
     public:
         explicit ConsoleLogger(const std::vector<LogLevel> &log_lvl_);

@@ -6,26 +6,14 @@
 
 namespace kernel {
     Field::Field(int width, int height) : width_(width), height_(height) {
-        if (width_ <= 0 || height_ <= 0) {
-            throw std::invalid_argument("Kernel Exception: Incorrect field size.");
-        }
-//        width_ = width_ <= 0 ? 10 : width_;
-//        height_ = height_ <= 0 ? 10 : height_;
-//        cells_ = std::vector<std::vector<Cell *>>(
-//                width_, std::vector<Cell *>(height_, nullptr)
-//        );
+        width_ = width_ <= 0 ? 10 : width_;
+        height_ = height_ <= 0 ? 10 : height_;
         cells_.reserve(width);
         for (int i = 0; i < width_; i++) {
             std::vector<Cell *> line;
             line.reserve(height);
-//            cells_.emplace_back(height_);
             for (int j = 0; j < height_; j++) {
-//                if (i + j == fmax(height_, width_)) {
-//                    cells_[i][j] = new Cell({i, j}, false);
-//                } else {
                 line.push_back(new Cell({i, j}));
-//                cells_[i][j] = new Cell({i, j});
-//                }
             }
             cells_.push_back(line);
         }
@@ -50,10 +38,6 @@ namespace kernel {
     const Cell *Field::readCell(Point point) const {
         return cells_[point.x][point.y];
     }
-
-//    Cell *Field::getCell(Point point) {
-//        return cells_[point.x][point.y];
-//    }
 
     Field::Field(const Field& obj) : height_(obj.height_), width_(obj.width_) {
         cells_ = std::vector<std::vector<Cell *>>(
@@ -85,10 +69,6 @@ namespace kernel {
 
             height_ = obj.getHeight();
             width_ = obj.getWidth();
-            // cells_ = std::vector<std::vector<Cell *>>(
-            //         width_, std::vector<Cell *>(height_, nullptr)
-            // );
-
             for (int i = 0; i < width_; i++) {
                 cells_.emplace_back(height_, nullptr);
                 for (int j = 0; j < height_; j++) {

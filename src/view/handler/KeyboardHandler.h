@@ -13,6 +13,7 @@ namespace view {
 #include "CommandCreator.h"
 
 namespace view {
+    /// Обработчик нажатий клавиатуры
     class KeyboardHandler {
     public:
         explicit KeyboardHandler(CommandCreator* command_creator);

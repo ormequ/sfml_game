@@ -11,6 +11,7 @@
 #include <cstring>
 
 namespace memento {
+    /// Пользовательское исключение
     class MementoException : public std::exception {
     public:
         enum class Reason {

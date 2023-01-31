@@ -5,6 +5,9 @@
 #ifndef GAME_IGAMESTATE_H
 #define GAME_IGAMESTATE_H
 
+/**
+ * Интерфейс-обертка над enum для передачи состояния игры (нужно для логирования изменений)
+ * */
 class IGameState {
 public:
     enum class State {

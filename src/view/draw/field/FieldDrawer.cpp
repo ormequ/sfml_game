@@ -59,7 +59,7 @@ namespace view {
     void FieldDrawer::drawCreature(kernel::ICreature *creature) {
         std::string path;
         if (dynamic_cast<kernel::Player*>(creature) != nullptr) {
-            path = "../src/resources/images/characters/BlueNinja.png";
+            path = "resources/images/characters/BlueNinja.png";
         }
         int rectLeft;
 

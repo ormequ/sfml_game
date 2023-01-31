@@ -13,6 +13,7 @@ namespace events {
 #include "EventChainLink.h"
 
 namespace events {
+    /// Интерфейс фабрики событий, принимает тип события
     class IEventFactory {
     public:
         virtual EventChainLink *produce(const std::string& type) = 0;

@@ -18,29 +18,40 @@ class GameMediator;
 #include "logger/LoggerController.h"
 #include "memento/MementoController.h"
 
+/**
+ * Связующее звено между всеми компонентами игры
+ * Паттерн -- Mediator
+ * */
 class GameMediator {
 public:
+    /// Вместо конструктора, чтобы остальным объектам можно было передать медиатора
     void init(
         kernel::KernelController *, view::ViewController *, mapmaker::MapGenerator *, events::EventsController *,
         logger::LoggerController *, memento::MementoController *
     );
 
+    /// Обновить состояние игры
     void update();
 
     events::EventsController *getEventsController();
 
-    const kernel::IField *readField() const;
+    ///@return поле только для чтения
+    [[nodiscard]] const kernel::IField *readField() const;
 
+    ///@return поле для записи
     kernel::IField *getField();
 
+    /// Поворот создания на направление direction
     void rotateCreature(kernel::ICreature *creature, kernel::ICreature::Direction direction);
 
+    /// Движение существа на клетку point, если она доступна
     void moveCreature(kernel::ICreature *creature, Point point);
 
     kernel::ICreature *getPlayer();
 
     std::vector<kernel::ICreature *> getCreatures();
 
+    /// Перезапись поля (изменение карты)
     void setField(kernel::IField *field);
 
     GameStateController::State getState();
@@ -49,12 +60,29 @@ public:
 
     IGameState *getStateController();
 
+    /// Сохранение игры
     void save();
 
+    /// Загрузка игры
     void load(const std::string& filename);
 
+    /**
+     * Задать пользователю вопрос
+     * @param question вопрос
+     * @param answers варианты ответа
+     *
+     * @return ответ
+     * */
     std::string askUser(const std::string &question, const std::vector<std::string> &answers);
 
+    /**
+     * Добавить событие на клетку
+     *
+     * @param point клетка
+     * @param event событие
+     * @param tileset внешний вид клетки после добавления события
+     * @param is_able условие вызова события
+     * */
     void addCellEvent(
         Point point, events::EventChainLink *event,
         kernel::Cell::Tileset tileset = kernel::Cell::Tileset::GRASS,

@@ -16,6 +16,7 @@
 #include "src/mapmaker/rules/ChangeMapRule.h"
 
 namespace mapmaker {
+    /// Сборник пресетов из правил генерации карты
     class MapPresetsCollector {
     public:
         explicit MapPresetsCollector(GameMediator *game_mediator);

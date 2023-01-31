@@ -17,6 +17,7 @@ namespace logger {
 #include <algorithm>
 
 namespace logger {
+    /// Записывает в переданный файл логи по переданным уровням
     class FileLogger : public ISubscriber {
     public:
         explicit FileLogger(const std::string& filename, const std::vector<LogLevel> &log_lvl);

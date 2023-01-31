@@ -14,6 +14,7 @@ namespace events {
 #include "FactoryNames.h"
 
 namespace events {
+    /// Интерфейс события
     class IEvent {
     public:
         virtual void dispatch(Point position) = 0;

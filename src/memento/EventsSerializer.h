@@ -13,6 +13,7 @@ namespace memento {
 #include "MementoException.h"
 
 namespace memento {
+    /// Класс, преобразующий события (см. папку events) в std::map и обратно
     class EventsSerializer {
     public:
         explicit EventsSerializer(events::EventsController *events_controller);

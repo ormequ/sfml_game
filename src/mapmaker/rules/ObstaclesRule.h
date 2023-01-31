@@ -13,6 +13,7 @@ namespace mapmaker {
         FOREST, LAKE
     };
 
+    /// Правило расстановки препятствий (озеро или лес)
     template<ObstacleType Type>
     class ObstaclesRule {
     public:

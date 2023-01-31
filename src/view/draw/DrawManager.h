@@ -19,6 +19,7 @@ namespace view {
 #include "HUD/HudDrawer.h"
 
 namespace view {
+    /// Отвечает за отображение всего
     class DrawManager {
     public:
         explicit DrawManager(GameMediator* game_mediator, sf::RenderWindow& window);

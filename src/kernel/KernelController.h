@@ -16,6 +16,7 @@ namespace kernel {
 #include "../Point.h"
 
 namespace kernel {
+    /// Контролирует главные элементы игры -- ядро
     class KernelController {
     public:
         explicit KernelController(GameMediator *game_mediator);
@@ -24,6 +25,7 @@ namespace kernel {
 
         void setPlayer(ICreature *new_player, bool delete_prev = true);
 
+        /// Определяет, что нужно делать на текущей итерации игры
         void update();
 
         ICreature *getPlayer();

@@ -17,6 +17,7 @@ namespace memento {
 #include "MementoException.h"
 
 namespace memento {
+    /// Класс, преобразующий ядро (см. папку kernel) в std::map и обратно
     class KernelSerializer {
     public:
         explicit KernelSerializer(GameMediator *game_mediator);

@@ -57,18 +57,17 @@ namespace logger {
             return;
         }
 
-        auto where = game_mediator_->askUser("Where do you want to log?", {"console", "file"});
+        auto where = game_mediator_->askUser("Where do you want to log?", {"console", "file[=\"<filename>\"] (filename is optional)"});
         if (where.find("console") != std::string::npos) {
             loggers_.push_back(new ConsoleLogger{log_lvl_});
         }
         if (where.find("file") != std::string::npos) {
             size_t start = where.find("file=\"");
-            std::string log_file = "../log.txt";
+            std::string log_file = "log.txt";
             if (start != std::string::npos) {
                 size_t end = where.find('"', start + 6);
                 if (end != std::string::npos) {
                     log_file = where.substr(start + 6, end - start - 6);
-                    std::cout << log_file << '\n';
                 }
             }
             loggers_.push_back(new FileLogger{log_file, log_lvl_});

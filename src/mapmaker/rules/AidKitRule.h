@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило расстановки аптечки
     template<unsigned int x, unsigned int y>
     class AidKitRule {
     public:

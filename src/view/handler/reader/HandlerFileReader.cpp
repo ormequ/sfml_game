@@ -7,11 +7,15 @@
 namespace view {
 
     HandlerFileReader::HandlerFileReader() {
-        file_.open("../src/config.txt");
+        if (std::filesystem::exists("config.txt")) {
+            file_.open("config.txt");
+        }
     }
 
     HandlerFileReader::~HandlerFileReader() {
-        file_.close();
+        if (file_.is_open()) {
+            file_.close();
+        }
     }
 
     std::map<std::string, std::string> HandlerFileReader::read() {

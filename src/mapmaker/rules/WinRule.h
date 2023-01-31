@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило размещения победного выхода
     template<unsigned int x, unsigned int y>
     class WinRule {
     public:

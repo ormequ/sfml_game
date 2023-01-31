@@ -20,6 +20,7 @@ namespace events {
 #include "FactoryNames.h"
 
 namespace events {
+    /// Отвечает за события и их фабрики. Реализовано, ориентируясь на паттерны "Цепочка обязанностей" и "Фабрика"
     class EventsController {
     public:
 
@@ -27,8 +28,10 @@ namespace events {
 
         IEventFactory *getFactory(FactoryName factory);
 
+        /// Обертка над методом getFactory
         EventChainLink *produce(FactoryName factory_name, const std::string& type);
 
+        ///@return пустое событие, необходимое для добавления проверки возможности вызова перед первым событием
         static EventChainLink *getEmptyEvent();
 
         ~EventsController();

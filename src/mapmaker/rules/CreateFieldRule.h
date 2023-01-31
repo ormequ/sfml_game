@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило создания пустого поля
     template<unsigned int width, unsigned int height>
     class CreateFieldRule {
     public:

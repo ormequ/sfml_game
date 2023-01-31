@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило смены позиции игрока
     template<unsigned int x, unsigned int y>
     class PlayerPositionRule {
     public:

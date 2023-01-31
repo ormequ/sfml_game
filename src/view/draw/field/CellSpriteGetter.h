@@ -9,11 +9,13 @@
 #include "../../../kernel/field/Cell.h"
 
 namespace view {
+    /// Так как у клеток могут быть объекты разного размера, эта структура приводит их к нужному
     struct InnerSpriteWrapper {
         float cell_percentage;
         sf::Sprite sprite;
     };
 
+    /// Класс, необходимый для получения внешнего вида клетки по ее содержимому
     class CellSpriteGetter {
     public:
         explicit CellSpriteGetter(TextureManager& texture_manager);

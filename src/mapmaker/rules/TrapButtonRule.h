@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило ловушки
     template<unsigned int x, unsigned int y>
     class TrapButtonRule {
     public:

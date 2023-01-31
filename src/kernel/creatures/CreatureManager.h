@@ -12,6 +12,7 @@
 #include "../../Point.h"
 
 namespace kernel {
+    /// Хранит всех созданий
     class CreatureManager {
     public:
         unsigned int addCreature(ICreature *creature);

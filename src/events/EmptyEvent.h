@@ -12,7 +12,7 @@ namespace events {
 #include "EventChainLink.h"
 
 namespace events {
-
+    /// Пустое событие, для проверки условий перехода к первому событию
     class EmptyEvent final : public EventChainLink {
     public:
         void dispatch(Point point) final;

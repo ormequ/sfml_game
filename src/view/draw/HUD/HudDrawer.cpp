@@ -20,7 +20,7 @@ namespace view {
                 heart_hp++;
             }
             sf::Sprite heart_sprite = texture_manager_.getSprite(
-                    "../src/resources/images/HUD/Heart.png", sf::IntRect(rectLeft, 0, 16, 16)
+                    "resources/images/HUD/Heart.png", sf::IntRect(rectLeft, 0, 16, 16)
             );
             auto left = (unsigned int)(view.getCenter().x + view.getSize().x / 2);
             unsigned int x = left - (5 + (hp.max - i) / 40 * 18);

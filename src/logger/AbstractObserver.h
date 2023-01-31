@@ -10,6 +10,7 @@
 #include "ISubscriber.h"
 
 namespace logger {
+    /// Наблюдатель за изменениями в программе. Реализован по одноименному паттерну
     class AbstractObserver {
     public:
         void subscribe(ISubscriber *subscriber);

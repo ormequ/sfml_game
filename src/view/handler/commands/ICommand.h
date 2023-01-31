@@ -6,6 +6,7 @@
 #define GAME_ICOMMAND_H
 
 namespace view {
+    /// Интерфейс команд, сделанный по паттерну команда
     class ICommand {
     public:
         virtual void execute() = 0;

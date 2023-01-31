@@ -11,12 +11,14 @@ namespace memento {
         if (!events_serializer_) {
             events_serializer_ = new EventsSerializer(game_mediator_->getEventsController());
         }
+        // Сохраняем все объекты в std::map, где ключ - название сохраняемого объекта, а значение - его std::map
         std::map<std::string, std::map<std::string, std::string>> result{};
         kernel::IField *field = game_mediator_->getField();
         result["field"] = {};
         result["field"]["WIDTH"] = std::to_string(field->getWidth());
         result["field"]["HEIGHT"] = std::to_string(field->getHeight());
 
+        // Для клеток поле std::map -- CELL_{x}.{y}_{PARAM}
         for (const auto &vec: field->getAllCells()) {
             for (auto cell: vec) {
                 std::string point = std::to_string(cell->getPoint().x) + "." + std::to_string(cell->getPoint().y);
@@ -24,6 +26,7 @@ namespace memento {
                     result["field"]["CELL_" + point + "_TILESET"] = tileset_to_str_[cell->getTileset()];
                 }
                 if (cell->getListener()) {
+                    // Вызываем EventSerializer для сохранения события
                     result["field"]["CELL_" + point + "_EVENT"] = events_serializer_->serialize(cell->getListener());
                 }
                 result["field"]["CELL_" + point + "_PASSABLE"] = std::to_string((int) cell->isPassable());
@@ -31,6 +34,8 @@ namespace memento {
         }
 
         result["creatures"] = {};
+        // Для создание поле std::map -- {CREATURE_NAME}_{x}.{y}_{PARAM}
+        // Примечание: из созданий реализован только игрок
         for (auto creature: game_mediator_->getCreatures()) {
             std::string prefix;
             if (dynamic_cast<kernel::Player *>(creature) != nullptr) {
@@ -53,6 +58,7 @@ namespace memento {
         if (!events_serializer_) {
             events_serializer_ = new EventsSerializer(game_mediator_->getEventsController());
         }
+        // Обязательно должно быть поле, его ширина и высота, а также создания (хотя бы одно - игрок)
         if (!data.count("field") || !data["field"].count("WIDTH") ||
             !data["field"].count("HEIGHT") || !data.count("creatures")) {
             throw MementoException(MementoException::Reason::INCORRECT_DATA, MementoException::Action::LOADING);
@@ -68,6 +74,7 @@ namespace memento {
             str_to_direction[it.second] = it.first;
         }
 
+        // Преобразуем CELL_{x}.{y}_{PARAM} для каждой клетки
         for (const auto &pair: data["field"]) {
             std::string key = pair.first;
             if (key.find("CELL") != std::string::npos) {
@@ -91,6 +98,7 @@ namespace memento {
             }
         }
 
+        // Преобразуем {CREATURE_NAME}_{x}.{y}_{PARAM} для каждого создания (пока для одного игрока)
         for (const auto &pair: data["creatures"]) {
             std::string key = pair.first;
             std::string name = key.substr(0, key.find('_'));

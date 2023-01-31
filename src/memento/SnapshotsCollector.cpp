@@ -14,6 +14,7 @@ namespace memento {
     }
 
     SnapshotsCollector::SnapshotsCollector(const std::string &saves_dir) {
+        std::filesystem::create_directory(saves_dir);
         saves_path_ = saves_dir;
         for (const auto &p : std::filesystem::recursive_directory_iterator(saves_path_)) {
             filenames_.push_back(p.path().filename().string());
@@ -77,6 +78,9 @@ namespace memento {
     }
 
     void SnapshotsCollector::save() {
+        // Запись в env файл по умолчанию происходит так
+        // #название_сохраняемого_объекта
+        // ПОЛЕ=ЗНАЧЕНИЕ
         std::ofstream file;
         std::time_t time = std::time(nullptr);
         std::localtime(&time);

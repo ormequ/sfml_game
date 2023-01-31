@@ -13,6 +13,7 @@
 #include "LogLevel.h"
 
 namespace logger {
+    /// Обертка над std::string. Добавляет полезную информацию в логи и реализует вывод в поток
     class LoggerMessage {
     public:
         explicit LoggerMessage(std::string message, LogLevel level);

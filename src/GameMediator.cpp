@@ -64,23 +64,26 @@ void GameMediator::setState(GameStateController::State state) {
 }
 
 void GameMediator::setField(kernel::IField *field) {
+    // При изменении навешиваем логирование на поле
     kernel_controller_->setField(logger_controller_->getProxy(field));
 }
 
 std::string GameMediator::askUser(const std::string &question, const std::vector<std::string> &answers) {
-    // return "console errors";
     return view_controller_->ask(question, answers);
 }
 
 void GameMediator::addCellEvent(
     Point point, events::EventChainLink *event, kernel::Cell::Tileset tileset, const std::function<bool()> &is_able
 ) {
+    // События реализованы цепочкой обязанностей (см. папку events),
+    // поэтому добавляем событие в конец цепочки
     kernel::Cell *cell = kernel_controller_->getField()->getCell(point);
     events::EventChainLink *listener = cell->getListener();
     if (listener) {
         listener->setTransmitChecker(is_able);
         listener->addToEnd(event);
     } else {
+        // Навешиваем логирование, если это первое событие в данной клетке
         cell->addListener(
             logger_controller_->getProxy(events::EventsController::getEmptyEvent())
                 ->setTransmitChecker(is_able)
@@ -108,6 +111,7 @@ void GameMediator::moveCreature(kernel::ICreature *creature, Point point) {
     try {
         kernel_controller_->moveCreature(creature, point);
     } catch (std::exception &e) {
+        // Если перешло сюда, значит, скорее всего, клетка непроходима
         logger_controller_->catchException(e);
     }
 }

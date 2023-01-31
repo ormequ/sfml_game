@@ -16,7 +16,7 @@ GameController::GameController() {
 }
 
 void GameController::start() {
-//     logger_controller_->startLogging();
+     logger_controller_->startLogging();
     try {
         game_mediator_->init(
             kernel_controller_, view_controller_, map_generator_,

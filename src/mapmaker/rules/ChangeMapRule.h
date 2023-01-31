@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило добавления события изменения карты на лес
     template<unsigned int x, unsigned int y>
     class ChangeMapRule {
     public:

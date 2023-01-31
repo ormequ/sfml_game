@@ -9,6 +9,7 @@
 #include <map>
 
 namespace logger {
+    /// Обертка над enum для добавления операторов == и (std::string)
     class LogLevel {
     public:
         enum class Level {

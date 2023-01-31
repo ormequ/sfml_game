@@ -18,6 +18,7 @@ namespace view {
 
         Point player_position = game_mediator_->getPlayer()->getPoint();
 
+        // Двигаем камеру относительно положения игрока
         float center_x = view.getSize().x / 2;
         float center_y = view.getSize().y / 2;
         while (((float)player_position.x + 1) * CELL_SIZE_ - center_x > view.getSize().x / 2) {

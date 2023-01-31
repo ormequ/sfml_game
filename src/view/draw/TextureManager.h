@@ -10,6 +10,7 @@
 #include <SFML/Graphics.hpp>
 
 namespace view {
+    /// Загрузчик текстур и спрайтов (чтобы не загружать повторно один файл)
     class TextureManager {
     public:
         sf::Texture* getTexture(const std::string& file_path);

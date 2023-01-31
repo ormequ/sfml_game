@@ -12,6 +12,7 @@ namespace mapmaker {
 #include "../GameMediator.h"
 
 namespace mapmaker {
+    /// Variadic template генератор из правил
     class MapGenerator {
     public:
         explicit MapGenerator(GameMediator *game_mediator) : game_mediator_(game_mediator) {};
@@ -20,6 +21,7 @@ namespace mapmaker {
         void generate() {
             MainRule{game_mediator_}();
             if constexpr (sizeof...(AdditionalRules) > 0) {
+                // Правила реализоавны в виде функторов
                 generate<AdditionalRules...>();
             }
         }

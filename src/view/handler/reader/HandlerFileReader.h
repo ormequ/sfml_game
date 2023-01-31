@@ -9,8 +9,10 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <filesystem>
 
 namespace view {
+    /// Ридер команд из файла config.txt
     class HandlerFileReader : public IHandlerReader {
     public:
         HandlerFileReader();

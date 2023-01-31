@@ -15,8 +15,10 @@ namespace view {
 
     void ViewController::start() {
         window_.setVerticalSyncEnabled(true);
+        // SFML цикл
         while (window_.isOpen()) {
             game_mediator_->update();
+            // Пока вывод состояния происходит в консоль, а не на экран
             if (game_mediator_->getState() == GameStateController::State::WIN) {
                 std::cout << "Wow! You win!\n";
                 window_.close();
@@ -49,7 +51,7 @@ namespace view {
     }
 
     std::string ViewController::ask(const std::string &question, const std::vector<std::string> &answers) {
-        // return "console errors";
+        // Пока общение с пользователем реализовано через консоль
         std::string printable_ans;
         for (const auto& answer : answers) {
             printable_ans += "|" + answer;

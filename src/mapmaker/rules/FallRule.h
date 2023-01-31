@@ -8,6 +8,7 @@
 #include "../../GameMediator.h"
 
 namespace mapmaker {
+    /// Правило ямы (случайный шанс падения)
     template<unsigned int x, unsigned int y>
     class FallRule {
     public:

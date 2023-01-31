@@ -7,6 +7,7 @@
 
 
 namespace kernel {
+    /// Структура параметров сущетсва
     struct CreatureParam {
         int value;
         int max;

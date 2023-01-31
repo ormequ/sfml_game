@@ -19,6 +19,7 @@ namespace view {
 #include "../../GameMediator.h"
 
 namespace view {
+    /// Преобразователь из строки, нажатой клавиши, в команду (ICommand)
     class CommandCreator {
     public:
         CommandCreator(GameMediator *game_mediator);

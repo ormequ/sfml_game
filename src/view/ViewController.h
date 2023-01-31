@@ -6,10 +6,6 @@
 #ifndef GAME_VIEWCONTROLLER_H
 #define GAME_VIEWCONTROLLER_H
 
-/*namespace view {
-    class DrawManager;
-    class KeyboardHandler;
-}*/
 namespace view {
     class ViewController;
 }
@@ -32,6 +28,9 @@ namespace view {
 
         void start();
 
+        /**
+         * Этот метод вызывает GameMediator, чтобы задать пользователю вопрос
+         * */
         std::string ask(const std::string &question, const std::vector<std::string> &answers);
 
         ~ViewController();
