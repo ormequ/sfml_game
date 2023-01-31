@@ -13,10 +13,10 @@
 <hr>
 
 <h3>Скриншоты</h3>
-![img](https://user-images.githubusercontent.com/57725831/215845208-f643d36b-fac2-4476-ba9e-1703ee650adc.png)
-![img_2](https://user-images.githubusercontent.com/57725831/215845200-3c89ab23-edfa-4640-b831-822a824e1867.png)
-![img_3](https://user-images.githubusercontent.com/57725831/215845190-5e73e512-ac45-41bf-940a-0ac2da88cbd7.png)
-![img_4](https://user-images.githubusercontent.com/57725831/215845164-b8dbb765-7813-43ff-a3af-2560dae0d4da.png)
+<img src="https://user-images.githubusercontent.com/57725831/215845208-f643d36b-fac2-4476-ba9e-1703ee650adc.png"><br>
+<img src="https://user-images.githubusercontent.com/57725831/215845200-3c89ab23-edfa-4640-b831-822a824e1867.png"><br>
+<img src="https://user-images.githubusercontent.com/57725831/215845190-5e73e512-ac45-41bf-940a-0ac2da88cbd7.png"><br>
+<img src="https://user-images.githubusercontent.com/57725831/215845164-b8dbb765-7813-43ff-a3af-2560dae0d4da.png"><br>
 
 <hr>
 
